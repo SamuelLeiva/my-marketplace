@@ -19,16 +19,22 @@ Un marketplace desarrollado con **Next.js 14**, diseñado para conectar vendedor
 ## 📁 Estructura del proyecto
 
 src/
-- app/ # Routing y vistas públicas
-- modules/ # Módulos de dominio (Products, Orders, etc.)
-- contracts/ # Schemas compartidos (Contract First)
-- shared/ # Utilidades, componentes comunes
+
+├── app/ # Routing y vistas públicas
+
+├── modules/ # Módulos de dominio (Products, Orders, etc.)
+
+├── contracts/ # Schemas compartidos (Contract First)
+
+├── shared/ # Utilidades, componentes comunes
+
 tests/ # Unit y integration tests
 
 ---
 
 ## 🧪 Comandos útiles
 
+```bash
 # Ejecutar en desarrollo
 npm run dev
 
