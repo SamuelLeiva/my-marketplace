@@ -9,4 +9,7 @@ export const UserSchema = z.object({
   createdAt: z.string().datetime(),
 })
 
+export const CreateUserSchema = UserSchema.omit({ id: true, createdAt: true })
+
 export type User = z.infer<typeof UserSchema>
+export type CreateUserInput = z.infer<typeof CreateUserSchema>

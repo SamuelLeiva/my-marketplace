@@ -8,4 +8,8 @@ export const OrderItemSchema = z.object({
   unitPrice: z.number().nonnegative(),
 })
 
+export const CreateOrderItemSchema = OrderItemSchema.omit({ id: true })
+
 export type OrderItem = z.infer<typeof OrderItemSchema>
+export type CreateOrderItemInput = z.infer<typeof CreateOrderItemSchema>
+

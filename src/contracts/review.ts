@@ -9,4 +9,7 @@ export const ReviewSchema = z.object({
   createdAt: z.string().datetime(),
 })
 
+export const CreateReviewSchema = ReviewSchema.omit({ id: true, createdAt: true })
+
 export type Review = z.infer<typeof ReviewSchema>
+export type CreateReviewInput = z.infer<typeof CreateReviewSchema>

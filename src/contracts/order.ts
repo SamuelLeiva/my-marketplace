@@ -8,4 +8,7 @@ export const OrderSchema = z.object({
   createdAt: z.string().datetime(),
 })
 
+export const CreateOrderSchema = OrderSchema.omit({ id: true, createdAt: true })
+
 export type Order = z.infer<typeof OrderSchema>
+export type CreateOrderInput = z.infer<typeof CreateOrderSchema>
