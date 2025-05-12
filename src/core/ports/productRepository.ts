@@ -6,5 +6,5 @@ export interface ProductRepository {
   list(): Promise<Product[]>;
   listBySeller(sellerId: string): Promise<Product[]>;
   delete(id: string): Promise<void>;
-  update(id: string, input: Partial<CreateProductInput>): Promise<Product>;
+  update(id: string, input: Partial<CreateProductInput>): Promise<Product | null>;
 }
