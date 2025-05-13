@@ -10,8 +10,10 @@ interface Params {
 
 export async function GET(req: NextRequest, { params }: Params) {
   try {
+    const categoryId = params.id;
+
     const useCase = new GetCategoryByIdUseCase(PrismaCategoryRepository);
-    const category = await useCase.execute(params.id);
+    const category = await useCase.execute(categoryId);
 
     if (!category) {
       return NextResponse.json({ error: "Category not found" }, { status: 404 });
@@ -19,7 +21,7 @@ export async function GET(req: NextRequest, { params }: Params) {
 
     return NextResponse.json(category);
   } catch (error) {
-    console.error("GET /api/category/[id] error:", error);
+    console.error("GET /api/categories/[id] error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

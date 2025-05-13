@@ -11,7 +11,7 @@ export async function GET(
 
     return NextResponse.json(products, { status: 200 });
   } catch (error) {
-    console.error("GET /api/product/by-seller/:sellerId error:", error);
+    console.error("GET /api/products/by-seller/:sellerId error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

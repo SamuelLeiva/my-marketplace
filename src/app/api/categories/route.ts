@@ -9,7 +9,7 @@ export async function GET() {
     const categories = await useCase.execute();
     return NextResponse.json(categories);
   } catch (error) {
-    console.error("GET /api/category error:", error);
+    console.error("GET /api/categories error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(category, { status: 201 });
   } catch (error) {
-    console.error("POST /api/category error:", error);
+    console.error("POST /api/categories error:", error);
     return NextResponse.json({ error: "Invalid input or server error" }, { status: 400 });
   }
 }

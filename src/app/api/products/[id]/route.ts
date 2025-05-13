@@ -22,7 +22,7 @@ export async function GET(req: NextRequest, { params }: Params) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
   } catch (error) {
-    console.error("GET /api/product/[id] error:", error);
+    console.error("GET /api/products/[id] error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
@@ -43,7 +43,7 @@ export async function PUT(req: NextRequest, { params }: Params) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
     }
   } catch (error) {
-    console.error("PUT /api/product/[id] error:", error);
+    console.error("PUT /api/products/[id] error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
@@ -55,7 +55,7 @@ export async function DELETE(req: NextRequest, { params }: Params) {
     await useCase.execute(params.id);
     return NextResponse.json({ message: "Product deleted successfully" });
   } catch (error) {
-    console.error("DELETE /api/product/[id] error:", error);
+    console.error("DELETE /api/products/[id] error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

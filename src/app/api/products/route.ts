@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(product, { status: 201 });
   } catch (error) {
-    console.error("POST /api/product error:", error);
+    console.error("POST /api/products error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
@@ -30,7 +30,7 @@ export async function GET() {
     const products = await useCase.execute();
     return NextResponse.json(products);
   } catch (error) {
-    console.error("GET /api/product error:", error);
+    console.error("GET /api/products error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
