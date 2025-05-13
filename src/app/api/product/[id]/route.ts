@@ -5,8 +5,14 @@ import { DeleteProductUseCase } from "@/core/use-cases/product/deleteProduct";
 import { PrismaProductRepository } from "@/infrastructure/db/prisma/productRepository";
 import { validateCreateProduct } from "@/lib/validators";
 
+interface Params {
+  params: {
+    id: string;
+  };
+}
+
 // GET: Obtener producto por ID
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: Params) {
   try {
     const useCase = new GetProductByIdUseCase(PrismaProductRepository);
     const product = await useCase.execute(params.id);
@@ -22,7 +28,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 }
 
 // PUT: Actualizar producto por ID
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest, { params }: Params) {
   try {
     const body = await req.json();
     
@@ -43,7 +49,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 }
 
 // DELETE: Eliminar producto por ID
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, { params }: Params) {
   try {
     const useCase = new DeleteProductUseCase(PrismaProductRepository);
     await useCase.execute(params.id);
