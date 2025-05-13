@@ -1,1 +1,6 @@
 export * from "./productRepository"
+export * from "./categoryRepository"
+export * from "./orderRepository"
+export * from "./orderItemRepository"
+export * from "./reviewRepository"
+export * from "./userRepository"
