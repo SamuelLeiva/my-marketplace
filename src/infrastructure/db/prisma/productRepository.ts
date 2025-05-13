@@ -5,7 +5,7 @@ import { normalizeProduct } from "./mappers/normalizeProduct";
 
 const prisma = new PrismaClient();
 
-export const productRepository: ProductRepository = {
+export const PrismaProductRepository: ProductRepository = {
   async create(input: CreateProductInput): Promise<Product> {
     const result = await prisma.product.create({
       data: {
