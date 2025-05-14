@@ -7,7 +7,7 @@ describe("validateCreateUser", () => {
     const input = {
       name: "Juan Pérez",
       email: "juan@example.com",
-      passwordHash: "hashedpassword123",
+      password: "hashedpassword123",
       role: "buyer"
     }
 
