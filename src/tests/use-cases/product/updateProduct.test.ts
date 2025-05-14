@@ -1,4 +1,3 @@
-// src/tests/use-cases/product/updateProduct.test.ts
 import { describe, it, expect, vi } from "vitest";
 import { UpdateProductUseCase } from "@/core/use-cases/product/updateProduct";
 import { Product } from "@/contracts";

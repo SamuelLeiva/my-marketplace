@@ -1,4 +1,3 @@
-// src/tests/use-cases/product/getProductById.test.ts
 import { describe, it, expect, vi } from "vitest";
 import { v4 as uuidv4 } from "uuid";
 import { Product } from "@/contracts";

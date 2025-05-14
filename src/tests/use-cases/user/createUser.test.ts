@@ -1,4 +1,3 @@
-// src/tests/use-cases/product/createProduct.test.ts
 import { describe, it, expect, vi } from "vitest";
 import { CreateUserInput, User } from "@/contracts";
 import { UserRepository } from "@/core/ports";

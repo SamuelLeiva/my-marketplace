@@ -2,9 +2,9 @@ import { describe, it, expect, vi } from "vitest";
 import { v4 as uuidv4 } from "uuid";
 import { User } from "@/contracts";
 import { UserRepository } from "@/core/ports";
-import { GetUserByIdUseCase } from "@/core/use-cases/user";
+import { GetUserByEmailUseCase } from "@/core/use-cases/user";
 
-describe("GetUserByIdUseCase", () => {
+describe("GetUserByEmailUseCase", () => {
   const validId = uuidv4();
   const mockUser: User = {
     id: validId,
@@ -17,22 +17,22 @@ describe("GetUserByIdUseCase", () => {
 
   const mockRepo: UserRepository = {
     create: vi.fn(),
-    getById: vi.fn(async (id: string) =>
-      id === mockUser.id ? mockUser : null
+    getByEmail: vi.fn(async (email: string) =>
+      email === mockUser.email ? mockUser : null
     ),
     list: vi.fn(),
-    getByEmail: vi.fn(),
+    getById: vi.fn(),
   };
 
-  const useCase = new GetUserByIdUseCase(mockRepo);
+  const useCase = new GetUserByEmailUseCase(mockRepo);
 
-  it("should return product when ID matches", async () => {
-    const result = await useCase.execute(validId);
+  it("should return user when email matches", async () => {
+    const result = await useCase.execute(mockUser.email);
     expect(result).toEqual(mockUser);
   });
 
-  it("should return null when ID does not match", async () => {
-    const result = await useCase.execute(uuidv4());
+  it("should return null when email does not match", async () => {
+    const result = await useCase.execute("otroemail@gmail.com");
     expect(result).toBeNull();
   });
 });
