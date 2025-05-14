@@ -8,10 +8,7 @@ const prisma = new PrismaClient();
 export const PrismaCategoryRepository: CategoryRepository = {
   async create(input: CreateCategoryInput): Promise<Category> {
     const result = await prisma.category.create({
-      data: {
-        ...input,
-        description: input.description ?? null,
-      }
+      data: input
     });
 
     return normalizeCategory(result);

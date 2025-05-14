@@ -8,11 +8,7 @@ const prisma = new PrismaClient();
 export const PrismaProductRepository: ProductRepository = {
   async create(input: CreateProductInput): Promise<Product> {
     const result = await prisma.product.create({
-      data: {
-        ...input,
-        description: input.description ?? null,
-        imageUrl: input.imageUrl ?? null,
-      },
+      data: input
     });
     return normalizeProduct(result);
   },
@@ -34,11 +30,7 @@ export const PrismaProductRepository: ProductRepository = {
   async update(id: string, input: Partial<CreateProductInput>): Promise<Product | null> {
     const result = await prisma.product.update({
       where: { id },
-      data: {
-        ...input,
-        description: input.description ?? null,
-        imageUrl: input.imageUrl ?? null,
-      },
+      data: input,
     });
     return normalizeProduct(result);
   },

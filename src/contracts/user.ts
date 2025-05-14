@@ -4,7 +4,7 @@ export const UserSchema = z.object({
   id: z.string().uuid(),
   name: z.string().min(1),
   email: z.string().email(),
-  passwordHash: z.string(),
+  password: z.string(),
   role: z.enum(["buyer", "seller", "admin"]),
   createdAt: z.string().datetime(),
 })
