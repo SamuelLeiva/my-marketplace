@@ -3,6 +3,9 @@ import { describe, it, expect } from "vitest";
 import { GET } from "@/app/api/categories/[id]/route";
 import { NextRequest } from "next/server";
 import { CATEGORY_ID } from "@/tests/constants/ids";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 function createContext(id: string) {
   return {
@@ -12,6 +15,12 @@ function createContext(id: string) {
 
 describe("GET /api/categories/:id", () => {
   it("should get category by id", async () => {
+    await prisma.category.create({
+        data: {
+          id: CATEGORY_ID,
+          name: "Default Category",
+        },
+      });
     const req = new NextRequest(`http://localhost/api/categories/${CATEGORY_ID}`, { method: "GET" });
 
     const res = await GET(req, createContext(CATEGORY_ID));

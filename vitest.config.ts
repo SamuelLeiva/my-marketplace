@@ -11,7 +11,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./vitest.setup.ts','./src/tests/setup.ts'],
-    exclude: ["node_modules", "dist", ".next", ".prisma"],
+    // exclude: ["node_modules", "dist", ".next", ".prisma"],
     sequence: {
       concurrent: false,
     }
