@@ -6,8 +6,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 describe("POST /api/categories", () => {
   it("should return 201 with created category", async () => {
+    const uniqueName = `TDD Category ${crypto.randomUUID()}`; // genera nombre único
     const req: NextRequest = createMockRequest("POST", "http://localhost/api/categories", {
-      name: "TDD Category 2", // este input dejará de ser valido una vez se cree el primer test por la misma validación
+      name: uniqueName, // este input dejará de ser valido una vez se cree el primer test por la misma validación
     });
 
     const res: NextResponse = await POST(req);
@@ -15,7 +16,7 @@ describe("POST /api/categories", () => {
     expect(res.status).toBe(201);
     const json = await res.json();
     expect(json).toHaveProperty("id");
-    expect(json.name).toBe("TDD Category 2");
+    expect(json.name).toBe(uniqueName);
   });
 
   it("should return 400 on invalid input", async () => {
