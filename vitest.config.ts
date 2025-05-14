@@ -10,6 +10,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: './vitest.setup.ts'
+    setupFiles: ['./vitest.setup.ts','./src/tests/setup.ts'],
+    exclude: ["node_modules", "dist", ".next", ".prisma"],
   }
-})
+});
