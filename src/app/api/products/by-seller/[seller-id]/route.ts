@@ -1,5 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { PrismaProductRepository } from "@/infrastructure/db/prisma/productRepository";
+import { PrismaUserRepository } from "@/infrastructure/db/prisma/userRepository";
 
 export async function GET(
   req: NextRequest,
@@ -7,6 +8,12 @@ export async function GET(
 ) {
   try {
     const { sellerId } = params;
+
+    const seller = await PrismaUserRepository.getById(sellerId);
+    if (!seller) {
+      return NextResponse.json({ error: "Seller not found" }, { status: 404 });
+    }
+
     const products = await PrismaProductRepository.listBySeller(sellerId);
 
     return NextResponse.json(products, { status: 200 });
