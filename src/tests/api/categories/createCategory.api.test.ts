@@ -1,4 +1,3 @@
-// tests/api/category/createCategory.test.ts
 import { describe, it, expect } from "vitest";
 import { POST } from "@/app/api/categories/route";
 import { createMockRequest } from "@/tests/utils/testApp";
