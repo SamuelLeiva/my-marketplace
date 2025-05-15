@@ -1,4 +1,3 @@
-// tests/api/category/getById.test.ts
 import { describe, it, expect } from "vitest";
 import { GET } from "@/app/api/categories/[id]/route";
 import { NextRequest } from "next/server";
