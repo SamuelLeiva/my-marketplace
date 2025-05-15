@@ -8,6 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
+    "test:run": "vitest run",
+    "test:unit": "vitest run --project unit",
+    "test:use-cases": "vitest run --project use-cases",
+    "test:api": "vitest run --project api",
     "prepare": "husky install"
   },
   "lint-staged": {

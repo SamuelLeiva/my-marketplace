@@ -9,5 +9,11 @@ describe("GET /api/users", () => {
     expect(res.status).toBe(200);
     const json = await res.json();
     expect(Array.isArray(json)).toBe(true);
+    expect(json.length).toBeGreaterThanOrEqual(1);
+
+    for (const category of json) {
+      expect(category).toHaveProperty("id");
+      expect(category).toHaveProperty("name");
+    }
   });
 });
