@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { CreateUserUseCase, ListUsersUseCase } from "@/core/use-cases/user";
 import { PrismaUserRepository } from "@/infrastructure/db/prisma/userRepository";
 import { validateCreateUser } from "@/lib/validators";
+import { ZodError } from 'zod';
 
 export async function POST(req: NextRequest) {
   try {
@@ -16,6 +17,9 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(user, { status: 201 });
   } catch (error) {
+    if(error instanceof ZodError) {
+      return NextResponse.json({ error: "Invalid input", issues: error.issues }, { status: 400 });
+    }
     console.error("POST /api/users error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
