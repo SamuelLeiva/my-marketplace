@@ -1,6 +1,6 @@
 import { beforeAll } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { CATEGORY_ID, CATEGORY_NAME, PRODUCT_ID, USER_EMAIL, USER_ID } from "../constants";
+import { CATEGORY_ID, CATEGORY_NAME, DELETE_PRODUCT_ID, PRODUCT_ID, USER_EMAIL, USER_ID } from "../constants";
 
 const prisma = new PrismaClient();
 
@@ -39,6 +39,18 @@ beforeAll(async () => {
       sellerId: user.id,
       imageUrl: "https://example.com/image.png",
       description: "This is a test product",
+    },
+  });
+
+  await prisma.product.create({
+    data: {
+      id: DELETE_PRODUCT_ID,
+      name: "Test Delete Product",
+      price: 1000,
+      categoryId: category.id,
+      sellerId: user.id,
+      imageUrl: "https://example.com/image1.png",
+      description: "This is a deletable product",
     },
   });
 });

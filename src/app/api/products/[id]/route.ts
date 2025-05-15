@@ -51,6 +51,11 @@ export async function PUT(req: NextRequest, { params }: Params) {
 // DELETE: Eliminar producto por ID
 export async function DELETE(req: NextRequest, { params }: Params) {
   try {
+    const product = await PrismaProductRepository.getById(params.id);
+    if (!product) {
+      return NextResponse.json({ error: "Product not found" }, { status: 404 });
+    }
+
     const useCase = new DeleteProductUseCase(PrismaProductRepository);
     await useCase.execute(params.id);
     return NextResponse.json({ message: "Product deleted successfully" });
