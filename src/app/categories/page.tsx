@@ -4,6 +4,7 @@ import { fetchCategories } from "@/lib/api";
 import { CategoryCard } from "@/ui/components/CategoryCard";
 
 export default async function CategoriesPage() {
+  
   const categories: Category[] = await fetchCategories();
 
   return (

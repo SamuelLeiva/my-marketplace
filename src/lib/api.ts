@@ -1,4 +1,4 @@
-import { Category } from "@/contracts";
+import { Category, User } from "@/contracts";
 
 
 export async function fetchCategories(): Promise<Category[]> {
@@ -17,5 +17,10 @@ export async function createCategory(name: string) {
     body: JSON.stringify({ name }),
     headers: { "Content-Type": "application/json" },
   });
+  return res.json();
+}
+
+export async function fetchUsers(): Promise<User[]> {
+  const res = await fetch("http://localhost:3000/api/users");
   return res.json();
 }
