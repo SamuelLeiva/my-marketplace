@@ -24,3 +24,13 @@ export async function fetchUsers(): Promise<User[]> {
   const res = await fetch("http://localhost:3000/api/users");
   return res.json();
 }
+
+export async function fetchUserById(id: string) {
+  const res = await fetch(`http://localhost:3000/api/users/${id}`);
+  return res.json();
+}
+
+export async function fetchUserByEmail(email: string) {
+  const res = await fetch(`http://localhost:3000/api/users/email/${email}`);
+  return res.json();
+}
